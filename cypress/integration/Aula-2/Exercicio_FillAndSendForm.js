@@ -16,6 +16,6 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get('input[id="email-checkbox"]').click()
     cy.get('textarea[id="open-text-area"]').type('Esse curso está muito bom, estou aprendendo bastante ja no inicio')
     cy.get('button[type="submit"]').click()
-    cy.get('strong').should('be.visible')
+    cy.get('.success').should('be.visible')
   })
 });
