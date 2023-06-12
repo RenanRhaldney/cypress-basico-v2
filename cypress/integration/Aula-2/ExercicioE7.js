@@ -9,6 +9,8 @@ describe("Central de Atendimento ao Cliente TAT", function () {
   });
 
   it('envia o formuário com sucesso usando um comando customizado', function(){
-    
+    cy.fillMandatoryFieldsAndSubmit() //função criada em support>commands.js 'Otima maneira de organizar a arquitetura do projeto'
+
+    cy.get("strong").should("be.visible"); // be.visible verifica se o elemento está visivel na tela
   })
 });

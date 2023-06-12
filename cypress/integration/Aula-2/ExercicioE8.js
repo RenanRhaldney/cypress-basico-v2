@@ -21,7 +21,7 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get(":nth-child(3) > input").click();
     cy.get("#email-checkbox").click();
     cy.get("#open-text-area").type(mensagem, { delay: 0 });
-    cy.get('button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
   });
 
   //EXERCICIO 2
@@ -34,7 +34,7 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get(":nth-child(3) > input").click();
     cy.get("#email-checkbox").click();
     cy.get("#open-text-area").type("mensagem", { delay: 0 });
-    cy.get('button[type="submit"]').click();
+    cy.contains("button", "Enviar").click();
     cy.get(".error").within(() => {
       cy.get("strong").should("be.visible");
     });
@@ -54,7 +54,7 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get(":nth-child(3) > input").click();
     cy.get("#phone-checkbox").click();
     cy.get("#open-text-area").type(mensagem, { delay: 0 });
-    cy.get('button[type="submit"]').click();
+    cy.contains('button', 'Enviar').click();
     cy.get(".error").within(() => {
       cy.get("strong").should("be.visible");
     });
@@ -89,11 +89,16 @@ describe("Central de Atendimento ao Cliente TAT", function () {
       .should("have.value", "");
   });
 
-  //EXERCICIO 5
-  it.only("exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios", function () {
-    cy.get(".button").click();
+  //EXERCICIO 6
+  it("exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios", function () {
+    cy.contains('button', 'Enviar').click();
     cy.get(".error").should("be.visible"); // be.visible verifica se o elemento está visivel na tela
   });
 
-  
+  //EXERCICIO 7
+  it("envia o formuário com sucesso usando um comando customizado", function () {
+    cy.fillMandatoryFieldsAndSubmit(); //função criada em support>commands.js 'Otima maneira de organizar a arquitetura do projeto'
+
+    cy.get("strong").should("be.visible"); // be.visible verifica se o elemento está visivel na tela
+  });
 });
