@@ -21,7 +21,7 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get(":nth-child(3) > input").click();
     cy.get("#email-checkbox").click();
     cy.get("#open-text-area").type(mensagem, { delay: 0 });
-    cy.contains("button", "Enviar").click();
+    cy.contains("button", "Enviar").click(); // Busca o elemento button que contem o texto Enviar
   });
 
   //EXERCICIO 2
