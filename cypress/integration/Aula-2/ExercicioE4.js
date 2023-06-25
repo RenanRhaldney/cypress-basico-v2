@@ -14,7 +14,7 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get("#email").type("Renan.rhaldney@hotmail.com");
     cy.get("select").select("cursos");
     cy.get(":nth-child(3) > input").click();
-    cy.get("#phone-checkbox").click();
+    cy.get("#phone-checkbox").check();
     cy.get("#open-text-area").type(mensagem, { delay: 0 });
     cy.get('button[type="submit"]').click();
     cy.get(".error").within(() => {
